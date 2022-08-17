@@ -22,6 +22,9 @@ def create_llist(vals: list[typing.Any]) -> ListNode:
     return head
 
 def get_llist_values(head: ListNode) -> list[typing.Any]:
+    """
+    Returns a consequtive list of values from all nodes of a linked list
+    """
     res = []
     node = head
     while node:
