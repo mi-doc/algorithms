@@ -7,7 +7,7 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
-        
+
 
 def create_tree(values: list[Any]) -> TreeNode:
     """
@@ -15,6 +15,8 @@ def create_tree(values: list[Any]) -> TreeNode:
     The nodes are added in breadth-first order.
     Returns the root of the new tree.
     """
+    if not values:
+        return None
     node = TreeNode(values[0])
     root = node
     queue = [node, node]
@@ -28,7 +30,7 @@ def create_tree(values: list[Any]) -> TreeNode:
             node.right = TreeNode(v)
             queue.append(node.right)
             queue.append(node.right)
-    
+
     return root
 
 def print_tree_breadth_first(root: TreeNode) -> None:

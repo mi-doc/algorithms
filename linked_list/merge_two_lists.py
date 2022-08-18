@@ -22,8 +22,8 @@ class Solution:
             else:
                 list2, curr.next = list2.next, list2
             curr = curr.next
-        
-        # If one list longer than another we just append it 
+
+        # If one list longer than another we just append it
         curr.next = list1 or list2 or None
 
         return head
