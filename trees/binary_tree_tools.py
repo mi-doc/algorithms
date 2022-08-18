@@ -17,30 +17,30 @@ def create_tree(values: list[Any]) -> TreeNode:
     """
     if not values:
         return None
-    queue = []
-    for v in values:
-        if not queue:
-            root = TreeNode(v)
-            # If we just create TreeNodes and pass them to the queue as objects,
-            # when the values list empties we would end with multiple
-            # leafs with 0 as value, which we don't need
-            queue.append((root, 'l'))
-            queue.append((root, 'r'))
-            continue
 
+    queue = [(None, 'root')]
+    for v in values:
         node, node_side = queue.pop(0)
         if not v:
             # If we have None in values list, we need to take this
             # node from the queue and continue without creating a TreeNode object (skip it)
             continue
-        if node_side == 'l':
+
+        if node_side == 'root':
+            # Defining the root
+            root = TreeNode(v)
+            node = root
+        elif node_side == 'l':
             node.left = TreeNode(v)
-            queue.append((node.left, 'l'))
-            queue.append((node.left, 'r'))
+            node = node.left
         else:
             node.right = TreeNode(v)
-            queue.append((node.right, 'l'))
-            queue.append((node.right, 'r'))
+            node = node.right
+
+        # 'l' and 'r' stand for 'left' and 'right'
+        queue.append((node, 'l'))
+        queue.append((node, 'r'))
+
     return root
 
 def print_tree_breadth_first(root: TreeNode) -> None:
@@ -67,3 +67,36 @@ def breadth_first_traversal(root: TreeNode) -> list[Any]:
         if n.right:
             q.append(n.right)
     return res
+
+def level_order_traversal(root: TreeNode) -> list[Any]:
+    """
+    Level-order traversal. Returns a list of lists with each level nodes
+    """
+    res = []
+    if not root:
+        return res
+
+    queue = [(root, 0)]
+    while queue:
+        node, level = queue.pop(0)
+        
+        # If we start another level, we add a new list to the res
+        # to add values from this level
+        if level > len(res) - 1:
+            res.append([node.val])
+        else:
+            res[level].append(node.val)
+
+        if node.left:
+            queue.append((node.left, level + 1))
+        if node.right:
+            queue.append((node.right, level + 1))
+    return res
+
+
+if __name__ == '__main__':
+    vals = [2,3,4,23,4123,4,5,1,1,3,3,4,4,]
+    vals = [1, None, 2, None, 4, 5]
+    tr = create_tree(vals)
+    res = level_order_traversal(tr)
+    print(res)
