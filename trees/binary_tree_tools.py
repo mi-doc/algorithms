@@ -17,20 +17,30 @@ def create_tree(values: list[Any]) -> TreeNode:
     """
     if not values:
         return None
-    node = TreeNode(values[0])
-    root = node
-    queue = [node, node]
-    for v in values[1:]:
-        node = queue.pop(0)
-        if not node.left:
+    queue = []
+    for v in values:
+        if not queue:
+            root = TreeNode(v)
+            # If we just create TreeNodes and pass them to the queue as objects,
+            # when the values list empties we would end with multiple
+            # leafs with 0 as value, which we don't need
+            queue.append((root, 'l'))
+            queue.append((root, 'r'))
+            continue
+
+        node, node_side = queue.pop(0)
+        if not v:
+            # If we have None in values list, we need to take this
+            # node from the queue and continue without creating a TreeNode object (skip it)
+            continue
+        if node_side == 'l':
             node.left = TreeNode(v)
-            queue.append(node.left)
-            queue.append(node.left)
+            queue.append((node.left, 'l'))
+            queue.append((node.left, 'r'))
         else:
             node.right = TreeNode(v)
-            queue.append(node.right)
-            queue.append(node.right)
-
+            queue.append((node.right, 'l'))
+            queue.append((node.right, 'r'))
     return root
 
 def print_tree_breadth_first(root: TreeNode) -> None:
