@@ -15,8 +15,9 @@ class Solution:
 
             # We will use "temp" list to store all consequtive items from the nums1 list,
             # because when we meet a lower number in nums2 list, we will have to shift everything
-            # in the nums1 to the right
-            if temp and len(temp) > t:
+            # in the nums1 to the right.
+            # So the 'temp' list is basically the first part of the nums1 list.
+            if len(temp) > t:
                 if i < m:
                     # Itmes with index more than 'm' are zeroes, so we don't need them
                     temp.append(nums1[i])
@@ -26,7 +27,7 @@ class Solution:
                 else:
                     nums1[i] = nums2[k]
                     k += 1
-            
+
             # When we've gone through the nums1 list (i > m), and the temp list is empty,
             # we just add everything what's left in the nums2
             elif i >= m:
