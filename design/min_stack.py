@@ -16,7 +16,6 @@ class MinStack:
                 self.min = float('inf')
         return val
 
-
     def top(self) -> int:
         return self.stack[-1]
 
