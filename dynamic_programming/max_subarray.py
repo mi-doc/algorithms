@@ -1,3 +1,4 @@
+from colorama import Fore, Style
 from typing import List
 
 
@@ -23,9 +24,14 @@ class Solution:
 def test(vals):
     s = Solution()
     for v in vals:
-        res = s.maxSubArray(v[0])
-        # res = s.smarter_solution(v[0])
-        print(v,' -> ', v[1] == res, ' -> ', res)
+        res = s.smarter_solution(v[0])
+        output = Fore.GREEN + str(res) if v[1] == res else Fore.RED + str(res)
+        print(
+            v,
+            ' -> ', 
+            output
+        )
+        print(Style.RESET_ALL, end='')
 
 if __name__ == '__main__':
     vals = [
