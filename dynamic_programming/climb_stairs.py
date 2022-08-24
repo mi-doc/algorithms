@@ -2,8 +2,6 @@ def climbStairsIterative(n):
     """
     The FASTEST solution
     """
-    if n in (0,1):
-        return n
     a, b = 0, 1
     for _ in range(n):
         a, b = b, a + b
@@ -13,7 +11,7 @@ def climbStairsRecursive(n):
     """
     This approach is far from the best due to time and space consumption
     """
-    if n in (0,1,2):
+    if n < 3:
         return n
     return climbStairsRecursive(n-1)+climbStairsRecursive(n-2)
 
