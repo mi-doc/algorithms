@@ -1,0 +1,4 @@
+
+# ZSH_THEME="onetwo"
+ZSH_THEME="bridby"
+ ZSH_THEME="oneone"
