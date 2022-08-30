@@ -25,7 +25,7 @@ class Solution:
 if __name__ == '__main__':
     vals = [1,3,4,2,7]
     head = create_llist(vals)
-    
+
     sol = Solution()
     # res = sol.reverseListRecursive(head)
     # print_llist(res)

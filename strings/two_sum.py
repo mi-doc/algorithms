@@ -13,7 +13,7 @@ class Solution(object):
             else:
                 d[n] = i
 
-        
+
         return 'Not success'
 
 

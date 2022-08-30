@@ -6,7 +6,7 @@ class Solution(object):
         """
         s = set(nums)
         return len(s) != len(nums)
-    
+
     def containsDuplicate2(self, nums):
 
         s = set()

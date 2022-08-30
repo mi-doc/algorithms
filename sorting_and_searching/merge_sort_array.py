@@ -8,7 +8,7 @@ class Solution:
         """
         if not nums2:
             return
-        
+
         temp = []
         i = k = t = 0
         while i < len(nums1):
@@ -40,7 +40,7 @@ class Solution:
                 temp.append(nums1[i])
                 nums1[i] = nums2[k]
                 k += 1
-            
+
             # If nums1 number smaller than from nums2, and no temp is present,
             # we just increment the index
             i += 1

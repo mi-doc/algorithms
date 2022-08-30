@@ -19,7 +19,7 @@ class Solution:
         """
         if len(nums) <= 2:
             return max(nums)
-       
+
         var2 = nums[0] + self.robRecursive(nums[2:])
         var1 = self.robRecursive(nums[1:])
         return max(var1, var2)
@@ -43,7 +43,7 @@ def test(vals):
         output = Fore.GREEN + str(res) if v[1] == res else Fore.RED + str(res)
         print(
             v,
-            ' -> ', 
+            ' -> ',
             output
         )
         print(Style.RESET_ALL, end='')
@@ -65,4 +65,3 @@ if __name__ == '__main__':
     ]
 
     test(vals)
-    

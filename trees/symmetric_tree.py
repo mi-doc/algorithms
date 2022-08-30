@@ -61,7 +61,7 @@ class Solution:
         """
         if not self.check_two_nodes_symmetry(left, right):
             return False
-        if not left:   
+        if not left:
             # If not right would work as well, as they are symmetric
             return True
         return self.check_two_subtrees_symmetry(left.right, right.left) and self.check_two_subtrees_symmetry(left.left, right.right)

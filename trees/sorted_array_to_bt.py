@@ -11,7 +11,7 @@ class Solution:
         root = TreeNode(nums[sep])
         root.left = self.sortedArrayToBST(nums[:sep])
         root.right = self.sortedArrayToBST(nums[sep + 1:])
-        
+
         return root
 
 
