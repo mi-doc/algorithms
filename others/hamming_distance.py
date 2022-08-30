@@ -14,8 +14,8 @@ class Solution:
         for i in range(-1, -max_len - 1, -1):
             num1 = x[i] if len(x) >= abs(i) else '0'
             num2 = y[i] if len(y) >= abs(i) else '0'
-            
-            if num1 != num2: 
+
+            if num1 != num2:
                 res += 1
         return res
 
@@ -35,7 +35,7 @@ def test(vals):
         output = Fore.GREEN + str(res) if v[1] == res else Fore.RED + str(res)
         print(
             v,
-            ' -> ', 
+            ' -> ',
             output
         )
         print(Style.RESET_ALL, end='')

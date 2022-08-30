@@ -3,13 +3,13 @@ class Solution:
         s = filter(lambda c: c.isalnum(), s)
         s = ''.join(s).lower()
         return s == s[::-1]
-    
+
     def betterSolution(self, s: str) -> bool:
         beg, end = 0, len(s) - 1
         while beg <= end:
-            while not s[beg].isalnum() and beg < end: 
+            while not s[beg].isalnum() and beg < end:
                 beg += 1
-            while not s[end].isalnum() and beg < end: 
+            while not s[end].isalnum() and beg < end:
                 end -= 1
             if s[beg].lower() == s[end].lower():
                 beg += 1
@@ -47,7 +47,7 @@ if __name__ == '__main__':
 
         sres = sorted(commands, key=lambda i: i[2])
         for i, c in enumerate(sres):
-            if i == 0: 
+            if i == 0:
                 msg = f"{i+1} -> {c[0]} - ({round(100*float(c[2])/float(sres[1][2]))}% of {sres[1][0]} time)"
                 continue
             msg += f"\n{i+1} -> {c[0]} is {round(c[2]/sres[0][2]*10)/10} times slower than {sres[0][0]}"

@@ -3,7 +3,7 @@
 
 class Solution:
     def firstBadVersion(self, n: int) -> int:
-        mid = n // 2 
+        mid = n // 2
         target = mid
         while True:
             mid = mid // 2
@@ -12,7 +12,7 @@ class Solution:
                     while isBadVersion(target):
                         target -= 1
                     return target + 1
-                target -= mid 
+                target -= mid
             else:
                 if mid == 0:
                     while not isBadVersion(target):

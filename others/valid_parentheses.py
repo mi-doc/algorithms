@@ -34,7 +34,7 @@ def test(vals):
         res = s.isValid(v[0])
         print(
             v,
-            ' -> ', 
+            ' -> ',
             Fore.GREEN + str(res) if v[1] == res else Fore.RED + str(res)
         )
         print(Style.RESET_ALL, end='')

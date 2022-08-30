@@ -79,7 +79,7 @@ def level_order_traversal(root: TreeNode) -> list[Any]:
     queue = [(root, 0)]
     while queue:
         node, level = queue.pop(0)
-        
+
         # If we start another level, we add a new list to the res
         # to add values from this level
         if level > len(res) - 1:

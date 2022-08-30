@@ -8,7 +8,7 @@ class Solution:
             if x[i] == '-':
                 continue
             xx += x[i]
-        
+
         xx = int(xx)
         if xx > 2**31-1 or xx < -2**31:
             return 0

@@ -11,7 +11,7 @@ class Solution:
             matrix[l], matrix[r] = matrix[r], matrix[l]
             l += 1
             r -= 1
-        # transpose 
+        # transpose
         for i in range(len(matrix)):
             for j in range(i):
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]

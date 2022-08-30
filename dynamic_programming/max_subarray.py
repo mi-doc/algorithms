@@ -9,7 +9,7 @@ class Solution:
         for n in nums[1:]:
             currSum = max(currSum + n, n)
             maxSum = max(currSum, maxSum)
-        
+
         return maxSum
 
     def smarter_solution(self, nums: List[int]) -> int:
@@ -28,7 +28,7 @@ def test(vals):
         output = Fore.GREEN + str(res) if v[1] == res else Fore.RED + str(res)
         print(
             v,
-            ' -> ', 
+            ' -> ',
             output
         )
         print(Style.RESET_ALL, end='')

@@ -25,7 +25,7 @@ class Solution:
             # Corner case when the target node is the head of the llist
             return head.next
         if pre_target:
-            pre_target.next = pre_target.next.next          
+            pre_target.next = pre_target.next.next
 
         return head
 
@@ -45,7 +45,7 @@ if __name__ == '__main__':
     vals = [4,3,1,2,7]
     # vals = [8,4]
     head = create_llist(vals)
-    
+
     sol = Solution()
     # res = sol.removeNthFromEnd(head, 3)
     # res = sol.secondsol(head, 3)

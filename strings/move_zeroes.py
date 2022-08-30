@@ -11,7 +11,7 @@ class Solution(object):
                 for k in range(i, sep):
                     nums[k], nums[k+1] = nums[k+1], nums[k]
                 sep -= 1
-               
+
         return nums
 
     def moveZeroes2(self, nums):

@@ -8,14 +8,14 @@ class Solution:
         while head:
             if head in visited:
                 return True
-            visited.add(head) 
+            visited.add(head)
             head = head.next
 
         return False
 
     def hasCycle2(self, head: Optional[ListNode]) -> bool:
         try:
-            # The 'try' statement is convenient, because if there is no head, 
+            # The 'try' statement is convenient, because if there is no head,
             # or the list contains only one node,
             # or we reach the end of the list, and an error occures -
             # - that means there is no cycle
@@ -44,7 +44,7 @@ if __name__ == '__main__':
         if i == 0:
             target = node
     node.next = target
-    
+
     sol = Solution()
     res = sol.hasCycle2(head)
     print(res)

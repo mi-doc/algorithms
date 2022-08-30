@@ -21,7 +21,7 @@ class MinStack:
 
     def getMin(self) -> int:
         return self.min
-        
+
 
 if __name__ == "__main__":
     obj = MinStack()

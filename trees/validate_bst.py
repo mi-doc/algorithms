@@ -8,7 +8,7 @@ class Solution:
         The function checks all nodes in BST to follow the rules of BST
         """
         return self.isValid(root)
-        
+
     def isValid(self, root: Optional[TreeNode], minval: Union[int, float] = float('-inf'), maxval: Union[int, float] = float('inf')) -> bool:
         """
         This recursive function assures that all left nodes are smaller than their parent and the root of the subtree,
@@ -16,10 +16,10 @@ class Solution:
         """
         if not root:
             return True
-            
+
         if root.val >= maxval or root.val <= minval:
             return False
-        
+
         return self.isValid(root.left, minval, root.val) and self.isValid(root.right, root.val, maxval)
 
 

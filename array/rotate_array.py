@@ -18,9 +18,9 @@ class Solution(object):
 
         for k in kas:
             nums[:] = nums[n-k:]+nums[:n-k]
-            
+
         return nums
-        
+
 
 
 if __name__ == '__main__':

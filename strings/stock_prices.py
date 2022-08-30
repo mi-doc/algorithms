@@ -6,7 +6,7 @@ class Solution(object):
         """
         profit = 0
         curr = prices[0]
-        
+
         for p in prices:
             if p > curr:
                 profit += p - curr

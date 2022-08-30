@@ -7,7 +7,7 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: bool
         """
-        # Creating sets with columns 
+        # Creating sets with columns
         cols = [set() for _ in range(len(board[0]))]
 
         # Calculating 3x3 squares on the field
@@ -87,7 +87,7 @@ if __name__ == '__main__':
 
         sres = sorted(commands, key=lambda i: i[2])
         for i, c in enumerate(sres):
-            if i == 0: 
+            if i == 0:
                 msg = f"{i+1} -> {c[0]} - ({round(100*float(c[2])/float(sres[1][2]))}% of {sres[1][0]} time)"
                 continue
             msg += f"\n{i+1} -> {c[0]} is {round(c[2]/sres[0][2]*10)/10} times slower than {sres[0][0]}"

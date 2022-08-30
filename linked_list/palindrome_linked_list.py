@@ -8,7 +8,7 @@ class Solution:
         while head:
             res.append(head.val)
             head = head.next
-        
+
         return res == res[::-1]
 
     def isPalindrome2(self, head):
@@ -18,9 +18,9 @@ class Solution:
         slow = fast = head
         while fast and fast.next:
             # fast traverses twice as fast and moves to the end of the list if the length is odd
-            # That means, when 'fast' is in the end of the list, 'slow' is in the middle 
+            # That means, when 'fast' is in the end of the list, 'slow' is in the middle
             fast = fast.next.next
-            
+
             # take it as a tuple being assigned (rev, rev.next, slow) = (slow, rev, slow.next), hence the re-assignment of slow would not affect rev (rev = slow)
             rev, rev.next, slow = slow, rev, slow.next
         if fast:
@@ -30,15 +30,15 @@ class Solution:
         while rev and rev.val == slow.val:
             slow = slow.next
             rev = rev.next
-        
-        # if equivalent then rev become None, return True; otherwise return False 
-        return not rev 
+
+        # if equivalent then rev become None, return True; otherwise return False
+        return not rev
 
 
 if __name__ == '__main__':
     vals = [1,3,4,2,7,7,2,4,3,1]
     head = create_llist(vals)
-    
+
     sol = Solution()
     # res = sol.isPalindrome2(head)
     # print(res)

@@ -4,14 +4,14 @@ from colorama import Fore, Style
 
 class Solution:
     """
-    Given an array nums containing n distinct numbers in the range [0, n], 
+    Given an array nums containing n distinct numbers in the range [0, n],
     return the only number in the range that is missing from the array.
     """
     def missingNumber(self, nums: List[int]) -> int:
         set_given = set(nums)
         set_range = set(range(len(nums)+1))
         return set_range.difference(set_given).pop()
-    
+
     def missingNumber2(self, nums: List[int]) -> int:
         """
         O(1) space complexity and O(n) time complexity
@@ -26,7 +26,7 @@ def test(vals):
         res = s.missingNumber2(v[0])
         print(
             v,
-            ' -> ', 
+            ' -> ',
             Fore.GREEN + str(res) if v[1] == res else Fore.RED + str(res)
         )
         print(Style.RESET_ALL, end='')
