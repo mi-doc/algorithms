@@ -20,7 +20,14 @@ RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
 
+COPY ../requirements.txt .
+
 RUN apt-get update && apt-get -y upgrade \
-		&& apt-get install -y curl wget git zsh && chsh -s $(which zsh) \
+		&& apt-get install -y curl wget git zsh vim && chsh -s $(which zsh) \
 		&& wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true \
-		pip install -r ../requirements.txt
+		&& pip install -r requirements.txt 
+
+# # P10k ZSH theme
+RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k \
+  	&& echo "source ~/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc \
+  	&& exec zsh
