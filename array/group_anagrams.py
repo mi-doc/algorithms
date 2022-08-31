@@ -21,7 +21,7 @@ class Solution:
             for c in s:
                 count[ord(c) - ord('a')] += 1
             ans[tuple(count)].append(s)
-        return ans.values()
+        return list(ans.values())
 
 
 def test(vals):

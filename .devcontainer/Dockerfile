@@ -27,7 +27,7 @@ RUN apt-get update && apt-get -y upgrade \
 		&& wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true \
 		&& pip install -r requirements.txt 
 
-# # P10k ZSH theme
+# P10k ZSH theme
 RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k \
   	&& echo "source ~/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc \
   	&& exec zsh

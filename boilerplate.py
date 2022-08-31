@@ -13,7 +13,7 @@ def test(vals):
         print(
             v,
             ' -> ',
-            Fore.GREEN + str(res) if v[1] == res else Fore.RED + str(res)
+            [Fore.RED,Fore.GREEN][v[1] == res] + str(res)
         )
         print(Style.RESET_ALL, end='')
 
