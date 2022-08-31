@@ -22,4 +22,5 @@ RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/
 
 RUN apt-get update && apt-get -y upgrade \
 		&& apt-get install -y curl wget git zsh && chsh -s $(which zsh) \
-		&& wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true && zsh
+		&& wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true \
+		pip install -r ../requirements.txt
