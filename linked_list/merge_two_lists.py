@@ -1,4 +1,3 @@
-from platform import node
 from linked_list_tools import create_llist, get_llist_values, print_llist, ListNode
 from typing import Optional
 
