@@ -1,5 +1,6 @@
 import queue
 from typing import Optional, Any
+from collections import deque
 
 # Definition for a binary tree node.
 class TreeNode:
@@ -18,15 +19,17 @@ def create_tree(values: list[Any]) -> TreeNode:
     if not values:
         return None
 
-    queue = [(None, 'root')]
+    queue = deque()
+    queue.append((None, 'root'))
     for v in values:
-        node, node_side = queue.pop(0)
+        node, node_side = queue.popleft()
         if not v:
             # If we have None in values list, we need to take this
             # node from the queue and continue without creating a TreeNode object (skip it)
             continue
 
         if node_side == 'root':
+            # Corner case:
             # Defining the root
             root = TreeNode(v)
             node = root
@@ -38,8 +41,7 @@ def create_tree(values: list[Any]) -> TreeNode:
             node = node.right
 
         # 'l' and 'r' stand for 'left' and 'right'
-        queue.append((node, 'l'))
-        queue.append((node, 'r'))
+        queue.extend(((node, 'l'), (node, 'r')))
 
     return root
 
@@ -76,27 +78,28 @@ def level_order_traversal(root: TreeNode) -> list[Any]:
     if not root:
         return res
 
-    queue = [(root, 0)]
+    queue = deque()
+    queue.append((root, 0))
     while queue:
-        node, level = queue.pop(0)
+        node, level = queue.popleft()
 
         # If we start another level, we add a new list to the res
         # to add values from this level
-        if level > len(res) - 1:
+        if level >= len(res):
             res.append([node.val])
         else:
             res[level].append(node.val)
 
-        if node.left:
-            queue.append((node.left, level + 1))
-        if node.right:
-            queue.append((node.right, level + 1))
+        queue.extend(
+            (n, level + 1)
+            for n in (node.left, node.right)
+            if n
+        )
     return res
 
 
 if __name__ == '__main__':
     vals = [2,3,4,23,4123,4,5,1,1,3,3,4,4,]
-    vals = [1, None, 2, None, 4, 5]
     tr = create_tree(vals)
     res = level_order_traversal(tr)
     print(res)

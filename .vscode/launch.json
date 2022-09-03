@@ -5,10 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "zshdb",
+            "name": "Python: Current File",
+            "type": "python",
             "request": "launch",
-            "name": "Zsh-Debug (simplest configuration)",
-            "program": "${file}"
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
         }
     ]
 }
