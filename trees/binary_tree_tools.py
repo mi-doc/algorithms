@@ -27,21 +27,22 @@ def create_tree(values: list[Any]) -> TreeNode:
             # If we have None in values list, we need to take this
             # node from the queue and continue without creating a TreeNode object (skip it)
             continue
-
-        if node_side == 'root':
-            # Corner case:
-            # Defining the root
-            root = TreeNode(v)
-            node = root
-        elif node_side == 'l':
-            node.left = TreeNode(v)
-            node = node.left
-        else:
-            node.right = TreeNode(v)
-            node = node.right
+        
+        n = TreeNode(v)
+        match node_side:
+            case 'root':
+                # Corner case: defining the root
+                root = n
+                node = root
+            case 'l':
+                node.left = n
+                node = node.left
+            case 'r':
+                node.right = n
+                node = node.right
 
         # 'l' and 'r' stand for 'left' and 'right'
-        queue.extend(((node, 'l'), (node, 'r')))
+        queue.extend((node, s) for s in 'lr')
 
     return root
 
