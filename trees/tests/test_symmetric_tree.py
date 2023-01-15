@@ -1,6 +1,6 @@
 import unittest
-from symmetric_tree import Solution
-from binary_tree_tools import create_tree
+from ..symmetric_tree import Solution
+from ..binary_tree_tools import create_tree
 
 
 class IsSymmetricTestCase(unittest.TestCase):
