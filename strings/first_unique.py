@@ -4,16 +4,15 @@ class Solution:
         for i, c in enumerate(s):
             if c in d:
                 d[c] = None
-                continue
-            d[c] = i
+            else:
+                d[c] = i
 
-
-        return c
+        return min((v for v in d.values() if v != None), default=-1)
 
 
 
 if __name__ == '__main__':
     s = Solution()
-    q = 'fsdfweasdfwg'
+    q = 'leetcode'
     res = s.firstUniqChar(q)
     print(res)

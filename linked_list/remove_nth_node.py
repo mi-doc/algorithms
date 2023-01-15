@@ -1,5 +1,5 @@
 from typing import Optional
-from linked_list_tools import create_llist, print_llist, ListNode
+from linked_list_tools import create_llist, ListNode
 
 
 class Solution:
@@ -34,9 +34,12 @@ class Solution:
         Solution from the leetcode comments
         """
         fast, slow = head, head
-        for _ in range(n): fast = fast.next
-        if not fast: return head.next
-        while fast.next: fast, slow = fast.next, slow.next
+        for _ in range(n): 
+            fast = fast.next
+            if not fast: 
+                return head.next
+        while fast.next: 
+            fast, slow = fast.next, slow.next
         slow.next = slow.next.next
         return head
 
@@ -54,10 +57,10 @@ if __name__ == '__main__':
 
 
 commands = [
-    [ 'sol.removeNthFromEnd(head,3)'],
-    [ 'sol.secondsol(head, 3)']
+     'sol.removeNthFromEnd(head,3)',
+     'sol.secondsol(head, 3)'
 ]
 
-from speed_tests import speed_test
+from speed_tests import speed_contest
 
-speed_test(commands, globals(), number=1)
+speed_contest(commands, globals(), number=1)

@@ -28,14 +28,15 @@ class Solution:
                 back, forw = i-1, i+1
 
                 # Finding if new palindrome is longer than previous longest
-                # using "sorted" function with "len" as a key
-                longest = sorted((self.getPalindrome(s, back, forw), longest), key=len)[1]
+                if len(pal := self.getPalindrome(s, back, forw)) > len(longest): 
+                    longest = pal
 
             if s[i] == s[i+1]:
                 #  "..aa.."
                 #  <- ^^ ->
                 back, forw = i, i+1
-                longest = sorted((self.getPalindrome(s, back, forw), longest), key=len)[1]
+                if len(pal := self.getPalindrome(s, back, forw)) > len(longest): 
+                    longest = pal
 
             i += 1
 
