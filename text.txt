@@ -1,0 +1,4 @@
+
+# ZSH_THEME="onetwo"
+ZSH_THEME="romka"
+ ZSH_THEME="oneone"
