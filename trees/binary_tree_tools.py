@@ -70,7 +70,7 @@ def breadth_first_traversal(root: TreeNode) -> list[Any]:
             q.append(n.right)
     return res
 
-def level_order_traversal(root: TreeNode) -> list[Any]:
+def level_order_traversal(root: TreeNode) -> list[list[Any]]:
     """
     Level-order traversal. Returns a list of lists with each level nodes
     """
@@ -101,8 +101,16 @@ def level_order_traversal(root: TreeNode) -> list[Any]:
     return res
 
 
+def tree_to_list(root: TreeNode) -> list[Any]:
+    level_traversal = level_order_traversal(root=root)
+    res = []
+    for l in level_traversal:
+        res.extend(l)
+    return res
+
+
 if __name__ == '__main__':
     vals = [2,3,4,23,4123,None,None,4,5,1,1,3,3,4,4,]
     tr = create_tree(vals)
-    res = level_order_traversal(tr)
+    res = tree_to_list(tr)
     print(res)
