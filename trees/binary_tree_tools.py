@@ -83,23 +83,26 @@ def level_order_traversal(root: TreeNode) -> list[Any]:
     while queue:
         node, level = queue.popleft()
 
+        val = getattr(node, 'val', None)
         # If we start another level, we add a new list to the res
         # to add values from this level
         if level >= len(res):
-            res.append([node.val])
+            res.append([val])
         else:
-            res[level].append(node.val)
+            res[level].append(val)
 
-        queue.extend(
-            (n, level + 1)
-            for n in (node.left, node.right)
-            if n
-        )
+        if node:
+            queue.extend( (n, level + 1) for n in (node.left, node.right))
+
+    # If all leafes on the last level are None, we don't need that level
+    if all(v is None for v in res[-1]):
+        res = res[:-1]
+    
     return res
 
 
 if __name__ == '__main__':
-    vals = [2,3,4,23,4123,4,5,1,1,3,3,4,4,]
+    vals = [2,3,4,23,4123,None,None,4,5,1,1,3,3,4,4,]
     tr = create_tree(vals)
     res = level_order_traversal(tr)
     print(res)
