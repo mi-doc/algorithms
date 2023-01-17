@@ -1,4 +1,0 @@
-
-# ZSH_THEME="onetwo"
-ZSH_THEME="bobby"
- ZSH_THEME="oneone"

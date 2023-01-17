@@ -1,5 +1,5 @@
 from typing import Optional, List
-from .binary_tree_tools import TreeNode, level_order_traversal
+from .binary_tree_tools import TreeNode
 
 
 class Solution:
