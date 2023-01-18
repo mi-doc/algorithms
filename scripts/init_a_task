@@ -1,0 +1,60 @@
+#!/bin/zsh
+
+
+[[ $1 == *.py ]] && filename=${1:0:-3} || filename=$1
+touch $filename.py
+echo "* file $filename.py created"
+
+# Asking if test folder is needed and creating it 
+if [[ ! -e ./tests ]]; 
+then 
+    printf "* tests directory doesn't exist. Create one?"
+    read answer
+    # if echo "$answer" | grep -iq "^y" ;then
+    if [ "$answer" != "${answer#[Yy]}" ] ;then # this grammar (the #[] operator) means that the variable $answer where any Y or y in 1st position will be dropped if they exist.
+        mkdir ./tests
+        touch ./tests/__init__.py
+        echo '* tests directory with __init__.py file created'
+    else
+        echo '* Skipping tests.'
+        exit;
+    fi
+else
+    echo "* tests directory already exists"
+fi
+
+# Creating file for testing in test directory
+testfile=tests/test_$filename.py
+echo "* $testfile created"
+touch $testfile
+
+# Reformatting from snake_case to PascalCase
+classname=$( sed -E 's/[-_]([a-z]{1})/\U\1/g' <<< $filename )
+classname=$( sed -E 's/^([a-z]{1})/\U\1/g' <<< $classname )
+
+# Adding header to the file
+echo "
+from typing import List
+
+# The essence of the task
+TASK =
+
+
+class Solution:
+    \"\"\"
+
+    \"\"\"
+" >> $filename.py
+
+# Adding header to the test file
+echo "
+import unittest
+from ..$filename import Solution
+
+
+class $classname""TestCase(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.sol = Solution()
+        return super().setUp()
+" >> $testfile
