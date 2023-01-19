@@ -1,17 +1,44 @@
 #!/bin/zsh
 
 
-[[ $1 == *.py ]] && filename=${1:0:-3} || filename=$1
+# Getting the filename (which is the task name) from the argument, or exit
+case $1 in 
+    "" ) 
+        echo "You need to specify a name. Try again"
+        exit;;
+    *.py ) 
+        filename=${1:0:-3};;
+    * ) 
+        filename=$1;;
+esac
+
+# Creating the file
 touch $filename.py
 echo "* file $filename.py created"
+
+# Adding a header to the file
+echo "from typing import List
+
+# The essence of the task
+TASK = \"\"\"
+
+\"\"\"
+
+
+class Solution:
+    \"\"\"
+
+    \"\"\"
+" >> $filename.py
 
 # Asking if test folder is needed and creating it 
 if [[ ! -e ./tests ]]; 
 then 
-    printf "* tests directory doesn't exist. Create one?"
+    printf "* tests directory doesn't exist. Create one? "
     read answer
-    # if echo "$answer" | grep -iq "^y" ;then
-    if [ "$answer" != "${answer#[Yy]}" ] ;then # this grammar (the #[] operator) means that the variable $answer where any Y or y in 1st position will be dropped if they exist.
+    
+    if grep -iq 'y\|yes' <<< $answer
+    then
         mkdir ./tests
         touch ./tests/__init__.py
         echo '* tests directory with __init__.py file created'
@@ -25,30 +52,14 @@ fi
 
 # Creating file for testing in test directory
 testfile=tests/test_$filename.py
-echo "* $testfile created"
 touch $testfile
+echo "* $testfile created"
 
 # Reformatting from snake_case to PascalCase
-classname=$( sed -E 's/[-_]([a-z]{1})/\U\1/g' <<< $filename )
-classname=$( sed -E 's/^([a-z]{1})/\U\1/g' <<< $classname )
-
-# Adding header to the file
-echo "
-from typing import List
-
-# The essence of the task
-TASK =
-
-
-class Solution:
-    \"\"\"
-
-    \"\"\"
-" >> $filename.py
+classname=$( sed -E 's/[-_](.)|^(.)/\u\1\2/g' <<< $filename )
 
 # Adding header to the test file
-echo "
-import unittest
+echo "import unittest
 from ..$filename import Solution
 
 
@@ -57,4 +68,8 @@ class $classname""TestCase(unittest.TestCase):
     def setUp(self) -> None:
         self.sol = Solution()
         return super().setUp()
+
+    def test(self):
+        res = self.sol.
+        assert res == 
 " >> $testfile
