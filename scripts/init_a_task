@@ -71,7 +71,7 @@ class $classname""TestCase(unittest.TestCase):
 
     def test1(self):
         args = {
-            'nums' =
+            'nums':
         }
         expected_answer =
 
