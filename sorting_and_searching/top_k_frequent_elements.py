@@ -99,7 +99,7 @@ class Solution:
     
     def topKFrequent4(self, nums: List[int], k: int) -> List[int]:
         """
-        Using min heap
+        Using min heap. O(n*logk)
         """
         h = []
         count = {}
@@ -112,6 +112,8 @@ class Solution:
             else:
                 heapq.heappush(h, (freq, num))
         
+        # Shorter alternative:
+        # return heapq.nlargest(k, count.keys(), key=count.get)
         return [num for freq, num in h]
 
         
