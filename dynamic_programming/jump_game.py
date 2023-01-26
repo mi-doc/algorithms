@@ -12,6 +12,7 @@ class Solution:
     """
     def canJump(self, nums: List[int]) -> bool:
         """
+        Dynamic programming solution.
         Time: O(n^2)
         """
         s = [0]
