@@ -8,7 +8,7 @@ TASK = """
 
 class Solution:
     """
-
+    Solution from Neetcode youtube channel.
     """
     def canJump(self, nums: List[int]) -> bool:
         """
