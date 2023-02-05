@@ -26,9 +26,7 @@ TASK = \"\"\"
 
 
 class Solution:
-    \"\"\"
-
-    \"\"\"
+    
 " >> $filename.py
 
 # Asking if test folder is needed and creating it 
