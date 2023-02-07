@@ -36,13 +36,18 @@ then
     read answer
     
     if grep -iq 'y\|yes' <<< $answer
-    then
-        mkdir ./tests
-        touch ./tests/__init__.py
-        echo '* tests directory with __init__.py file created'
-    else
-        echo '* Skipping tests.'
-        exit;
+        then
+            if [[ ! -e ./__init__.py ]];
+                then
+                    touch ./__init__.py
+                    echo '* ./__init__.py created'
+            fi
+            mkdir ./tests
+            touch ./tests/__init__.py
+            echo '* tests/__init__.py created'
+        else
+            echo '* Skipping tests.'
+            exit;
     fi
 else
     echo "* tests directory already exists"
