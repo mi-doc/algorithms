@@ -13,7 +13,7 @@ Return true if n is a happy number, and false if not.
 
 
 class Solution:
-    def isHappy(self, n: int) -> bool: 
+    def isHappy(self, n: int) -> bool:
         
         def getsum(number):
             total_sum = 0
