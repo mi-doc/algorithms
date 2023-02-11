@@ -2,31 +2,11 @@
 # def isBadVersion(version: int) -> bool:
 
 class Solution:
-    def firstBadVersion(self, n: int) -> int:
-        mid = n // 2
-        target = mid
-        while True:
-            mid = mid // 2
-            if isBadVersion(target):
-                if mid == 0:
-                    while isBadVersion(target):
-                        target -= 1
-                    return target + 1
-                target -= mid
-            else:
-                if mid == 0:
-                    while not isBadVersion(target):
-                        target += 1
-                    return target
-                target += mid
 
-    def firstBadVersion2(self, n) -> int:
-        """
-        Proper version from leetcode. It does 2x times less calls to "isBadVersion" function
-        """
+    def firstBadVersion(self, n) -> int:
         left, right = 1, n
         while left < right:
-            mid = left + (right - left) // 2
+            mid = (right + left) // 2
             if isBadVersion(mid):
                 right = mid
             else:
@@ -43,7 +23,7 @@ def test(vals):
     for val in vals:
         global BAD_V
         BAD_V = val[1]
-        res = s.firstBadVersion2(val[0])
+        res = s.firstBadVersion(val[0])
         print(
             val,
             ' -> ',
