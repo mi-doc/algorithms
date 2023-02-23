@@ -73,11 +73,14 @@ class $classname""TestCase(unittest.TestCase):
         return super().setUp()
 
     def test1(self):
-        args = {
-            'nums':
-        }
-        expected_answer =
+        res = self.sol(
+           
+        )
+        assert res ==
 
-        res = self.sol(**args)
-        assert res == expected_answer
+    def test2(self):
+        res = self.sol(
+           
+        )
+        assert res ==
 " >> $testfile
