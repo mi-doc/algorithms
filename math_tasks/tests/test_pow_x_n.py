@@ -24,5 +24,5 @@ class PowXNTestCase(unittest.TestCase):
         expected_answer = 9.26100
 
         res = self.sol(**args)
-        res = int(res*100000) / 100000
+        res = round(res, 5)
         assert res == expected_answer
