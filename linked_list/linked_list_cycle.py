@@ -3,17 +3,8 @@ from typing import Optional
 
 
 class Solution:
+
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        visited = set()
-        while head:
-            if head in visited:
-                return True
-            visited.add(head)
-            head = head.next
-
-        return False
-
-    def hasCycle2(self, head: Optional[ListNode]) -> bool:
         try:
             # The 'try' statement is convenient, because if there is no head,
             # or the list contains only one node,
@@ -46,5 +37,5 @@ if __name__ == '__main__':
     node.next = target
 
     sol = Solution()
-    res = sol.hasCycle2(head)
+    res = sol.hasCycle(head)
     print(res)

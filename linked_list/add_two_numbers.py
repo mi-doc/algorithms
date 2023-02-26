@@ -5,10 +5,9 @@ from colorama import Fore, Style
 
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        rem = 0  # Remainder
-        head = None
-        while l1 or l2:
-            next_num, rem = rem, 0
+        carry, head = 0, None
+        while l1 or l2 or carry:
+            next_num, carry = carry, 0
             if l1:
                 next_num += l1.val
                 l1 = l1.next
@@ -16,9 +15,8 @@ class Solution:
                 next_num += l2.val
                 l2 = l2.next
             
-            if next_num > 9:
-                next_num = next_num - 10
-                rem = 1
+            carry = next_num // 10
+            next_num %= 10
             
             if not head:
                 head = ListNode(next_num)
@@ -26,8 +24,6 @@ class Solution:
             else:
                 node.next = ListNode(next_num)
                 node = node.next
-        if rem:
-            node.next = ListNode(rem)
         
         return head
 
