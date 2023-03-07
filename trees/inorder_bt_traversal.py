@@ -24,24 +24,39 @@ class Solution:
         
         return res
 
+    def inorderTraversalRecursive(self, root: Optional[TreeNode]) -> List[int]:
+        def helper(root):
+            if root:
+                helper(root.left)
+                res.append(root.val)
+                helper(root.right)
 
-def test(vals):
-    s = Solution()
-    for v in vals:
-        head = create_tree(v[0])
-        res = s.inorderTraversalStack(head)
-        print(
-            v,
-            ' -> ',
-            [Fore.RED,Fore.GREEN][v[1] == res] + str(res)
-        )
-        print(Style.RESET_ALL, end='')
+        res = []
+        helper(root)
+        return res
 
-if __name__ == '__main__':
-    vals = [
-        ([1, None, 2, 3], [1,3,2]),
-        ([1], [1]),
-        ([], [])
-    ]
-
-    test(vals) 
+    def inorderTraversalMorris(self, root: Optional[TreeNode]) -> List[int]:
+        res, curr = [], root
+        
+        while curr:
+            if curr.left:
+                pre = curr.left
+                while pre.right and pre.right != curr:
+                    # The rightest node of the curr.left tree (the 'pre' node) is the node, which value
+                    # will be printed just before curr
+                    pre = pre.right
+                        
+                if pre.right == None:
+                    pre.right = curr
+                    curr = curr.left
+                else: # if pre.right == curr
+                    pre.right = None
+                    res.append(curr.val)
+                    curr = curr.right
+            else:
+                res.append(curr.val)
+                curr = curr.right
+        
+        return res
+                
+            
