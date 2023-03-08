@@ -32,7 +32,7 @@ class Solution:
         Space complexity : O(S) where S is the amount to change
         """
         
-        @lru_cache
+        @lru_cache # lru stands for Least recently used
         def dfs(rem):
             if rem < 0: return -1
             if rem == 0: return 0
